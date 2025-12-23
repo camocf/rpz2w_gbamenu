@@ -59,10 +59,15 @@ int main(void) {
 
     endwin();
 
-    if (access(savename, F_OK) == 0) {
-        execl("/usr/bin/mgba", "mgba", files[sel], "-t", savename, NULL);
+    char gamepath[256] = "/usr/games/";
+    char savepath[256] = "/usr/games/";
+    strcat(gamepath, files[sel]);
+    strcat(savepath, savename);
+
+    if (access(savepath, F_OK) == 0) {
+        execl("/usr/bin/mgba", "mgba", gamepath, "-t", savepath, NULL);
     } else {
-        execl("/usr/bin/mgba", "mgba", files[sel], NULL);
+        execl("/usr/bin/mgba", "mgba", gamepath, NULL);
     }
     
     

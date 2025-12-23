@@ -30,6 +30,7 @@ int main(void) {
     initscr();
     noecho();
     keypad(stdscr, TRUE);
+    curs_set(0);        // Make the cursor invisible (0)
 
     splash_screen();
 
